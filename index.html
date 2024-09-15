@@ -252,7 +252,7 @@
                     <li><a href="http://www.linkedin.com/in/ritika-thakur-624061268"><i class="fa-brands fa-linkedin-in"></i> </a></li>
                     <li><a href="https://www.instagram.com/__ritika_rajput_77/"><i class="fa-brands fa-instagram"></i></a></li>
                     <li><a href="mailto:rranithakur907@gmail.com" ><i class="fa-solid fa-envelope"></i> </a></li>
-                      <li><a href="#" title="Get Educate with Us"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#" title="Get Educate with Us"><i class="fa-brands fa-twitter"></i></a></li>
                   </ul>
 
                 </div>
@@ -260,31 +260,33 @@
             </div>
 
             <!-- Reach -->
+             
             <div class="column right">
               <div class="text">Message me</div>
-              <form action="#">
+              <form action="#" onsubmit="sendEmail(); reset(); return false;">
                 <div class="fields">
                   <div class="field name">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" id="name" placeholder="Your Name" required>
                   </div>
                   <div class="field email">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
                   </div>
                 </div>
                 <div class="field">
-                  <input type="text" placeholder="Subject" required>
+                  <input type="text" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="field textarea">
-                  <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                  <textarea cols="30" rows="10" id="message" placeholder="Message.." required></textarea>
                 </div>
                 <div class="button-area">
-                  <button type="submit"><a href="mailto:rranithakur907@gmail.com">Send Message</a>
+                  <button type="submit">Send Message
                   </button>
                 </div>
               </form>
             </div>
           </div>
         </div>
+      
       </section>
 
       <!-- Footer -->
@@ -299,5 +301,25 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
     <script src="script.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail(){
+        
+        Email.send({
+        Host : "smtp.gmail.com",
+        Username : "rranithakur907@gmail.com",
+        Password : "Kanha@1405",
+        To : 'rranithakur907@gmail.com',
+        From : document.getElementById("email").value,
+        Subject : "This is the subject",
+        Body  : "Name:"+document.getElementById("name").value + "<br> Email: "+document.getElementById("email").value
+        + "<br> subject: "+document.getElementById("subject").value
+        + "<br> Message: "+document.getElementById("message").value
+
+         }).then(
+        message => alert("Message send successfully")
+                  );
+      }
+    </script>
   </body>
 </html>
